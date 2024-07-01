@@ -1,33 +1,24 @@
 import React from "react";
-import { FlatList, Image, Pressable, StyleSheet } from "react-native";
-import products from "./src/data/products";
+import ProductsScreen from "./src/screens/ProductsScreen";
+import { StatusBar, StyleSheet, View } from "react-native";
+import ProductDetailsScreen from "./src/screens/ProductDetailsScreen";
 
 export default function App() {
   return (
-    <FlatList
-      data={products}
-      renderItem={({ item }) => (
-        <Pressable
-          onPress={() => {
-            navigation.navigate("Product Details", { id: item._id });
-          }}
-          style={styles.itemContainer}
-        >
-          <Image source={{ uri: item.image }} style={styles.image} />
-        </Pressable>
-      )}
-      numColumns={2}
-    />
+    <View style={StyleSheet.container}>
+      {/* <ProductsScreen /> */}
+      <ProductDetailsScreen />
+
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  itemContainer: {
-    width: "50%",
-    padding: 1,
-  },
-  image: {
-    width: "100%",
-    aspectRatio: 1,
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
