@@ -4,18 +4,14 @@ import { StatusBar, StyleSheet, View } from "react-native";
 import ProductDetailsScreen from "./src/screens/ProductDetailsScreen";
 import ShoppingCart from "./src/screens/ShoppingCart";
 import { Provider } from "react-redux";
+import Navigation from "./src/navigation";
 import { store } from "./src/store";
 
 export default function App() {
   return (
     <Provider store={store}>
-      <View style={StyleSheet.container}>
-        {/* <ProductsScreen /> */}
-        {/* <ProductDetailsScreen /> */}
-        <ShoppingCart />
-
-        <StatusBar style="auto" />
-      </View>
+      <Navigation />
+      <StatusBar style="auto" />
     </Provider>
   );
 }
