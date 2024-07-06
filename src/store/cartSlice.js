@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { createSlice, createSelector } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
@@ -8,24 +8,32 @@ const initialState = {
 };
 
 export const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     addCartItem: (state, action) => {
       const newProduct = action.payload.product;
       const cartItem = state.items.find(
-        (item) => item.product._id === newProduct._id
+        (item) => item.product.id === newProduct.id
       );
       if (cartItem) {
         cartItem.quantity += 1;
       } else {
         state.items.push({ product: newProduct, quantity: 1 });
       }
+      console.log("here are all the items..............");
+      console.log("here are all the items..............");
+      console.log("here are all the items..............");
+      console.log("here are all the items..............");
+      console.log(state.items);
+      const itemsArray = [...state.items];
+      console.log(itemsArray);
     },
+
     changeQuantity: (state, action) => {
       const { productId, amount } = action.payload;
       const cartItem = state.items.find(
-        (item) => item.product._id === productId
+        (item) => item.product.id === productId
       );
       if (cartItem) {
         cartItem.quantity += amount;

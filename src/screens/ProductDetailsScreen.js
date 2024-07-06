@@ -9,12 +9,19 @@ import {
   useWindowDimensions,
 } from "react-native";
 import products from "../data/products";
+import { useGetProductQuery } from "../store/apiSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { cartSlice } from "../store/cartSlice";
 
-const ProductDetailsScreen = () => {
-  const product = products[0];
+const ProductDetailsScreen = ({ route }) => {
+  const product = useSelector((state) => state.products.selectedProduct);
+  const dispatch = useDispatch();
   const { width } = useWindowDimensions();
 
-  const addToCart = () => {};
+  const addToCart = () => {
+    console.log(product);
+    dispatch(cartSlice.actions.addCartItem({ product }));
+  };
 
   return (
     <View>
